@@ -1,0 +1,393 @@
+<?php echo $this->render('header.phtml') ?>
+<body>
+<header class="indent">
+<div class="container">
+<h1 class="navbar-brand navbar-brand_"><a href="<?php echo $this->baseUrl(); ?>"><img src="<?php echo $this->baseUrl(); ?>/images/Logo.png" alt="logo"></a></h1>
+  <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+   <ul class="nav sf-menu clearfix">
+     <li class="active"><a href="#" id="btnAdd" >+ AGREGAR CONTACTO</a></li>
+   </ul>
+  </nav>
+</div>
+</header>
+<div class="global">
+ <div class="slider">
+   <div class="camera_wrap">
+    <div data-src="<?php echo $this->baseUrl(); ?>/images/FondoAgenda.jpg"><div class="camera-caption fadeIn"><p class="description">Contactos</p></div></div>
+     <div data-src="https://livedemo00.template-help.com/wt_51342/img/picture2.jpg"><div class="camera-caption fadeIn"><p class="description">friendly dry cleaning</p></div></div>
+   </div>
+ </div>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 carousel-box">
+   <div class="list_carousel1 responsive clearfix">
+    <ul id="foo1">
+     <li>
+       <div class="row">
+        <div class="box">
+          <form id="contact-form" style="display: none;">
+           <div class="contact-form-loader"></div>
+             <fieldset>
+<label class="name form-div-1">
+Nombre:
+</label>
+<label class="name form-div-1">
+<input type="text" name="name" id="name" value=""  />
+</label>
+<label class="name form-div-2">
+Apellido Paterno:
+</label>
+<label class="email form-div-2">
+<input type="text" name="paterno" id="paterno"  value=""  />
+</label>
+<label class="name form-div-1">
+Apellido Materno:
+</label>
+<label class="phone form-div-1">
+<input type="text" name="materno" id="materno" value=""  />
+</label>
+<label class="name form-div-2">
+E-mail:
+</label>
+<label class="phone form-div-2">
+<input type="text" name="email" name="email" value=""  />
+</label>
+<label class="name form-div-1">
+Dirección:
+</label>
+<label class="phone form-div-1">
+<input type="text" name="direccion" id="direccion"  value=""  />
+</label>
+<label class="name form-div-1">
+Código Postal:
+</label>
+<label class="phone form-div-1">
+<input type="text" maxlength="5" name="cp" id="cp"  value=""  />
+<span id="resultado" style="color:#ffffff"></span>
+</label>
+<label class="name form-div-2">
+Delegación/Municipio:
+</label>
+<label class="phone form-div-2">
+<select id="deleg"  name="deleg">
+   <option ></option>
+</select>
+</label>
+<label class="name form-div-1">
+Estado:
+</label>
+<label class="phone form-div-1">
+<select id="state"  name="state">
+ <option ></option>
+</select>
+</label>
+<label class="name form-div-2">
+Colonia:
+</label>
+<label class="phone form-div-2">
+<select id="colonia"  name="colonia">
+ <option ></option>
+</select>
+</label>
+<label class="name form-div-1">
+Teléfono casa:
+</label>
+<label class="phone form-div-1">
+<input type="text" name="phonecasa" id="phonecasa" maxlength="25" onkeypress="return justNumbers(event);" value=""  />
+</label>
+<label class="name form-div-2">
+Celular:
+</label>
+<label class="phone form-div-2">
+<input type="text" name="celular" id="celular" maxlength="25" onkeypress="return justNumbers(event);" value=""  />
+</label>
+<label class="name form-div-1">
+Teléfono Oficina:
+</label>
+<label class="phone form-div-1">
+<input type="text" name="phoneoficina" id="phoneoficina" maxlength="25" onkeypress="return justNumbers(event);"value=""  />
+</label>
+<label class="name form-div-2">
+Otro teléfono:
+</label>
+<label class="phone form-div-2">
+<input type="text" name="otrophone" id="otrophone" maxlength="25" onkeypress="return justNumbers(event);" value=""  />
+</label>
+</fieldset>
+</form>
+<a href="" id="btnCerrar" style="display: none;float:right;margin-right:20px;" class="btn-default btn2">CERRAR</a>
+<a href="" id="guardarCliente" style="display: none;float:right;margin-right:20px;" class="btn-default btn2">GUARDAR</a>
+    </div>
+   </div>
+</li>
+<li>
+<div class="row">
+ <div class="">
+  <table id="js-tabla" >
+ <tr> 
+     <th>NOMBRE</th> 
+	 <th>TELEFONO CASA</th> 
+	 <th>CELULAR</th>
+     <th>TELEFONO OFICINA</th>.
+	 <th></th>
+ </tr>
+
+<!--    recorro el arreglo de datos-->
+    <?php foreach ($this->datos as $d) : ?>
+
+
+   <tr> 
+   <td><?php echo  $d["Nombre"];?> <?php echo  $d["Paterno"];?> <?php echo  $d["Materno"];?> </td> 
+   <td><?php echo  $d["Telcasa"];?></td> 
+   <td><?php echo  $d["Celular"];?></td>
+   <td><?php echo  $d["TelOficina"];?></td> 
+   <td> <a href="<?php echo $this->baseUrl(); ?>/Index/detalle/id/<?php echo $d["idContacto"]; ?>" class="btn-default btn2">VER DETALLE</a> <a href="<?php echo $this->baseUrl(); ?>/Index/editar/id/<?php echo $d["idContacto"]; ?>" class="btn-default btn2">EDITAR</a></td>
+   </tr>
+
+   <!--    fin del for-->
+    <?php endforeach; ?>
+</table>
+ </div>
+</div>
+</li>
+</ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<?php echo $this->render('footer.phtml') ?>
+
+<script defer="defer"  src="<?php echo $this->baseUrl(); ?>/js/alertify.js"></script>
+<script defer="defer"  src="<?php echo $this->baseUrl(); ?>/js/js/scrollLock.min.js"></script>
+<script defer="defer"  src="<?php echo $this->baseUrl(); ?>/js/semantic.min.js"></script>
+<script defer="defer"  src="<?php echo $this->baseUrl(); ?>/js/site.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	$("#btnAdd").click(function(evento){
+		
+			$("#contact-form").css("display", "block");
+			$("#guardarCliente").css("display", "block");
+			$("#btnCerrar").css("display", "block");
+		
+	});
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$("#btnCerrar").click(function(evento){
+		
+			$("#contact-form").css("display", "none");
+			$("#guardarCliente").css("display", "none");
+			$("#btnCerrar").css("display", "none");
+			
+	});
+});
+</script>
+ 
+ <script>
+$(function() {  
+  
+     $('#contact-form').validate({
+                                        debug: true,
+                                        //onfocusout: true,
+                                        //onsubmit : true,
+                                        onkeyup: false,
+                                        //submitHandler: ajaxSubmit
+                                        rules: {
+                                            name: {
+                                                required: true
+                                            },
+											email: {
+                         
+                                                email: true
+                                            } 
+                                        },
+                                        messages: {
+                                            
+                                            name: {
+                                                required: "Nombre requerido"
+                                            },email: {
+                        
+                                            email: "Formato de correo incorrecto"
+                                            },
+                                        }
+
+                                    });  
+  
+    $('#guardarCliente').click(function() {  
+
+	event.preventDefault();
+	
+	 if ($('#contact-form').valid()) {
+	
+	
+		  $.blockUI({message: "Por favor espere...", css: {border: 'none', padding: '15px', backgroundColor: '#000',
+                         '-webkit-border-radius': '10px', '-moz-border-radius': '10px', opacity: .5, color: '#fff'}});
+	
+	
+	   var nombre = $("#name").val();
+	   var telcasa = $("#phonecasa").val();
+	   var celular = $("#celular").val();
+	   var teloficina = $("#phoneoficina").val();
+	
+	
+	var formData = new FormData($("form#contact-form")[0]);
+  
+   $.ajax({
+            url: "<?php echo $this->baseUrl(); ?>/Index/add",
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response.codigo != 200) {
+                    alertify.error("Error al editar los datos");
+                    setTimeout(function() {
+                    	
+                        $.unblockUI();
+                    }, 1500);
+                } else {
+					
+			$("#contact-form").css("display", "none");
+			$("#guardarCliente").css("display", "none");
+			$("#btnCerrar").css("display", "none");
+			
+			
+			$('#js-tabla tr:last').after('<tr><td>'+nombre+'</td><td>'+telcasa+'</td><td>'+celular+'</td><td>'+teloficina+'</td><td><a href="" class="btn-default btn2">VER DETALLE</a> <a href="" class="btn-default btn2">EDITAR</a></td></tr>');
+			
+					
+                     alertify.set('notifier','position', 'top-right');
+                     alertify.success('Datos actualizados con éxito');
+                     setTimeout(function() {
+                    	
+                        $.unblockUI();
+                    }, 1500);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alertify.error("Error al editar los datos");
+				setTimeout(function() {
+                    	
+                        $.unblockUI();
+                    }, 1500);
+                
+            }
+        });       
+
+	    } else {
+                 alertify.error("Favor de completar los datos requeridos",200);
+                                            
+               }
+	   
+    });  
+});  
+</script>
+
+ <script type="text/javascript">
+			$(document).ready(function(){ 
+			
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 100) {
+					$('.scrollup').fadeIn();
+				} else {
+					$('.scrollup').fadeOut();
+				}
+			}); 
+			
+			$('.scrollup').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, 600);
+				return false;
+			});
+ 
+		});
+</script>
+		
+		
+<script type="text/javascript">
+         $(document).ready(function() {
+             $("#cp").keyup(function() {
+            	     
+						 var valor =  $('#cp').val();
+						 
+                	 if ((valor).length==5)
+                	 {
+                		 $("#resultado").html("Procesando, espere por favor...");
+						 
+						 $.post("<?php echo $this->baseUrl(); ?>/Index/colonia", {
+                         cp:valor
+                     }, function(data) {
+         
+                    	 
+                    	   $("#colonia").html(data)
+                                              
+                     });
+                    
+                     
+                     $.post("<?php echo $this->baseUrl(); ?>/Index/estado",{
+                    	 cp:valor
+                     },function(estado) {
+                    	 
+                			 $('#state').html(estado);
+         		
+         
+                 });
+                     $.post("<?php echo $this->baseUrl(); ?>/Index/municipio",{
+                    	 cp:valor
+                     },function(municipio) {
+                    	 
+                			 $('#deleg').html(municipio);
+         
+                			 var mensaje=municipio;
+         
+                             
+                           if ($.trim(mensaje)=='error')
+                           {
+                               
+                        	   $("#resultado").html("Código Postal no encontrado...");
+                        	   $('input[name=cp]').val('');
+                           }
+                           else
+                           {
+                			 $("#resultado").html("");
+                           }
+                       
+                     
+                 });
+                    
+                	 }
+                	 
+                	 
+                     
+             });
+         
+               
+         });
+         
+         
+         
+ </script>
+	  
+<script>
+	  
+	  function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        }
+	  
+</script>
+
+</body> 
+</html>

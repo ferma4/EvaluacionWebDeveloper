@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mi Agenda</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="<?php echo $this->baseUrl(); ?>/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="<?php echo $this->baseUrl(); ?>/images/favicon.ico" type="image/x-icon"/>
+<meta name="description" content="Mi Agenda">
+<meta name="author" content="Fernando MTZ">
+<meta name="format-detection" content="telephone=no"/>
+ 
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/style.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/camera.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/contact-form.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/alertify.css" />
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/themes/default.css" />
+
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/js/camera.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery.mobile.customized.min.js"></script>
+<script type='text/javascript' src='<?php echo $this->baseUrl(); ?>/plugins/form-validation/jquery.validate.min.js'></script> 
+<script type='text/javascript' src='<?php echo $this->baseUrl(); ?>/plugins/jquery-blockUI/jquery.blockUI.js'></script>
+		 
+
+<script>
+    $(document).ready(function(){
+        jQuery('.camera_wrap').camera();
+    });
+</script>
+
+<style>
+            label.error { font-size: 14px; color: red}
+            input.error, textarea.error { border: 1px solid red }
+</style>
+		
+
+</head>

@@ -1,0 +1,233 @@
+<?php
+
+
+
+$fp = fopen("./resources/assets/css/fichero.txt", "a+");
+
+$protocolos = array('http://', 'https://', 'ftp://', 'www.');
+$pilainicio = array("http://www.mclasificados.net/");
+//$pilainicio = array("http://www.fmanuncios.com.mx/");
+$pilafinal = array();
+$correos = array();
+$a=0;
+$x=1;
+
+$contador=0;
+
+
+
+
+while($x > 0) {
+	
+	if($contador==100 )
+	{
+		break;
+		
+	}
+		
+	
+	
+	
+	//print_r($pila);
+	if($a==1)
+	{
+    $pilainicio=array();
+	$pilainicio=$resultado;
+	}
+	
+	
+	
+foreach ($pilainicio as $valor)
+{
+	
+	
+//	echo $valor."</br>";
+$url = file_get_contents($valor); 
+$dom = new DOMDocument();
+@$dom->loadHTML($url);
+$xpath = new DOMXPath($dom);
+$hrefs = $xpath->evaluate("/html/body//a");
+
+$pila = array();
+
+for ($i = 0; $i < $hrefs->length; $i++) {
+	$href = $hrefs->item($i);
+	
+	
+	$urlverifica=$href->getAttribute('href');
+	
+	
+	
+  if(strpos($urlverifica, '/')==0)
+  {
+	  $urlverifica="http://www.mclasificados.net".$urlverifica;
+	  //$urlverifica="http://www.fmanuncios.com.mx".$urlverifica;
+	  
+  }
+	
+	
+	$urlval = explode('/', str_replace($protocolos, '', $urlverifica));
+    $urlnueva = $urlval[0];
+	
+	
+	if($urlnueva=="mclasificados.net")
+	
+	//if($urlnueva=="fmanuncios.com.mx")
+	{
+	
+	//echo $urlverifica."</br>";
+	
+	array_push($pila, $urlverifica);
+	
+	
+	
+	}
+	
+	//print_r($pila);
+   
+      	
+	
+	 preg_match_all('([A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+.[A-Za-z0-9_-]+)' , $url , $cap ) ;
+
+    foreach ($cap[0] as $email)
+	{
+		//echo "<br/>$cuenta.- $email";
+		echo $email."</br>";
+		
+		array_push($correos, $email);
+		
+		
+		
+		//$cuenta++;
+	}
+}
+
+
+$resultado = array_unique($pila);
+
+
+
+foreach ($resultado as $key => $valorunico)
+{
+	
+	if($a==0)
+	{
+		
+		array_push($pilafinal, $valorunico);
+		fputs($fp, $valorunico."\r\n");
+      	
+		unset($resultado[3]);
+	}
+	else{
+	
+	foreach ($pilafinal as $valoracumulado)
+{
+	
+	
+	
+	if($valorunico==$valoracumulado)
+	{
+		unset($resultado[$key]);
+	
+	}
+	else
+	{
+		
+
+//***********************
+
+foreach ($pilafinal as $valoracumulado)
+{
+	
+	
+	
+	if($valorunico==$valoracumulado)
+	{
+		unset($resultado[$key]);
+	
+	}
+	else
+	{
+		
+		
+		$fp = fopen("./resources/assets/css/fichero.txt", "r");
+while(!feof($fp)) {
+$linea = fgets($fp);
+
+
+if($linea==$valoracumulado)
+	{
+		unset($resultado[$key]);
+	
+	}
+
+
+}
+
+fclose($fp);
+
+		
+		
+		
+		
+		
+		
+		//array_push($pilafinal, $valorunico);
+		
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+//********************************************************		
+		
+		
+		
+		//array_push($pilafinal, $valorunico);
+		
+	}
+	
+	
+	
+}
+	}
+	
+}
+
+//print_r($resultado);
+
+
+$x=count($resultado);
+//$x=$x+1;
+$a=1;  
+
+// echo $x;
+  
+  
+}
+  $contador++;
+  
+  
+  fclose($fp);
+
+}
+
+
+
+
+//echo count($pilafinal);
+
+
+
+
+
+
+
