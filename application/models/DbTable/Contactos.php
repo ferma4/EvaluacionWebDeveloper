@@ -50,13 +50,16 @@ class Application_Model_DbTable_Contactos extends Zend_Db_Table_Abstract {
     {
          $db = Zend_Registry::get('db');
 		
-		$stmt = $db->query("CALL addContacto('$nombre','$paterno','$materno','$email','$direccion','$colonia','$muncipio','$estado','$cp','$telCasa','$celular','$otroTel','$telOficina')");
+		$stmt = $db->query("CALL addContacto('$nombre','$paterno','$materno','$email','$direccion','$colonia','$muncipio','$estado','$cp','$telCasa','$celular','$otroTel','$telOficina',@LID)");
 
 		
-		if ($stmt)
-		{
-		return true;
-		}
+		$rs2 = $db->query("SELECT @LID as id");
+        $row = $rs2->fetchObject();
+
+		
+		
+		return $row->id;
+		
 		
 	}
 	

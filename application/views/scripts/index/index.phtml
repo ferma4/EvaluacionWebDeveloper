@@ -250,7 +250,7 @@ $(function() {
             processData: false,
             success: function(response) {
                 if (response.codigo != 200) {
-                    alertify.error("Error al editar los datos");
+                    alertify.error("Error al guardar los datos");
                     setTimeout(function() {
                     	
                         $.unblockUI();
@@ -261,12 +261,13 @@ $(function() {
 			$("#guardarCliente").css("display", "none");
 			$("#btnCerrar").css("display", "none");
 			
+			var idlast=response.id;
 			
-			$('#js-tabla tr:last').after('<tr><td>'+nombre+'</td><td>'+telcasa+'</td><td>'+celular+'</td><td>'+teloficina+'</td><td><a href="" class="btn-default btn2">VER DETALLE</a> <a href="" class="btn-default btn2">EDITAR</a></td></tr>');
+			$('#js-tabla tr:last').after('<tr><td>'+nombre+'</td><td>'+telcasa+'</td><td>'+celular+'</td><td>'+teloficina+'</td><td><a href="<?php echo $this->baseUrl(); ?>/Index/detalle/id/'+idlast+'" class="btn-default btn2">VER DETALLE</a> <a href="<?php echo $this->baseUrl(); ?>/Index/editar/id/'+idlast+'" class="btn-default btn2">EDITAR</a></td></tr>');
 			
 					
                      alertify.set('notifier','position', 'top-right');
-                     alertify.success('Datos actualizados con éxito');
+                     alertify.success('Datos guardados con éxito');
                      setTimeout(function() {
                     	
                         $.unblockUI();
@@ -274,7 +275,7 @@ $(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alertify.error("Error al editar los datos");
+                alertify.error("Error al guardar los datos");
 				setTimeout(function() {
                     	
                         $.unblockUI();

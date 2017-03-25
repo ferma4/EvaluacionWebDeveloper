@@ -183,10 +183,11 @@ class IndexController extends Zend_Controller_Action
 	    $table = new Application_Model_DbTable_Contactos();
         $add = $table->addContacto($nombre,$paterno,$materno,$email,$direccion,$colonia,$muncipio,$estado,$cp,$telCasa,$celular,$otroTel,$telOficina);
 	
-		if ($add)
+		if ($add>0)
 		{
 		 $resultado = array(
-                        "codigo" => 200
+                        "codigo" => 200,
+						"id" => $add
                         
                     );
                                         
